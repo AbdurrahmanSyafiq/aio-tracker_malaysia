@@ -83,7 +83,7 @@ export default function Sidebar(props: SidebarProps) {
           <>
             <div className="flex flex-col justify-center overflow-hidden">
               <h1 className="text-base font-extrabold text-white tracking-tight leading-tight">
-                PC Brands Malaysia
+                Malaysia
               </h1>
               <p className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">
                 All in One Tracker
