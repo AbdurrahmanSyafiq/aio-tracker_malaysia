@@ -9,6 +9,19 @@ import {
   safeEqual,
 } from "@/lib/session";
 
+// The app may be shown inside an <iframe> on another domain (e.g. GitHub Pages).
+// In that case the cookie is "third-party", so in production it must be
+// SameSite=None + Secure (+ Partitioned) or the browser drops it and every data
+// request fails with 401. Locally (http://localhost) we keep plain Lax.
+const isProd = process.env.NODE_ENV === "production";
+const cookieBase: any = {
+  httpOnly: true,
+  path: "/",
+  secure: isProd,
+  sameSite: isProd ? "none" : "lax",
+  ...(isProd ? { partitioned: true } : {}),
+};
+
 export async function POST(request: Request) {
   try {
     const body = await request.json();
@@ -29,10 +42,7 @@ export async function POST(request: Request) {
       if (okUser && okPass) {
         const res = NextResponse.json({ success: true });
         res.cookies.set(SESSION_COOKIE, createSessionToken(), {
-          httpOnly: true,
-          sameSite: "lax",
-          secure: process.env.NODE_ENV === "production",
-          path: "/",
+          ...cookieBase,
           maxAge: SESSION_MAX_AGE,
         });
         return res;
@@ -50,7 +60,7 @@ export async function POST(request: Request) {
 
     if (action === "logout") {
       const res = NextResponse.json({ success: true });
-      res.cookies.set(SESSION_COOKIE, "", { path: "/", maxAge: 0 });
+      res.cookies.set(SESSION_COOKIE, "", { ...cookieBase, maxAge: 0 });
       return res;
     }
 
