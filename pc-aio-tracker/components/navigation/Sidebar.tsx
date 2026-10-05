@@ -1,5 +1,4 @@
 import React from "react";
-import { signOut } from "next-auth/react";
 import { CONFIG, selectClass, dateClass, dateClassDark } from "@/lib/config";
 
 interface SidebarProps {
@@ -84,7 +83,7 @@ export default function Sidebar(props: SidebarProps) {
           <>
             <div className="flex flex-col justify-center overflow-hidden">
               <h1 className="text-base font-extrabold text-white tracking-tight leading-tight">
-                PC Brands
+                PC Brands Malaysia
               </h1>
               <p className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">
                 All in One Tracker
@@ -462,7 +461,17 @@ export default function Sidebar(props: SidebarProps) {
         )}
 
         <button
-          onClick={() => signOut({ callbackUrl: "/" })}
+          onClick={async () => {
+            try {
+              await fetch("/api/sheets", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ action: "logout" }),
+              });
+            } finally {
+              window.location.href = "/";
+            }
+          }}
           title="Logout"
           className={`w-full rounded-xl text-xs font-bold tracking-wide transition-all flex items-center border border-slate-700 text-slate-300 hover:bg-rose-600 hover:border-rose-500 hover:text-white ${isSidebarOpen ? "justify-center gap-2 py-3" : "justify-center p-3"}`}>
           <svg

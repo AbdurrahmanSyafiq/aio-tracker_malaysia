@@ -1,35 +1,69 @@
 import { google } from "googleapis";
 import { NextResponse } from "next/server";
+import { cookies } from "next/headers";
+import {
+  SESSION_COOKIE,
+  SESSION_MAX_AGE,
+  createSessionToken,
+  verifySessionToken,
+  safeEqual,
+} from "@/lib/session";
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
     const { action, sheetName, username, password } = body;
 
-    // --- 1. SECURE BACKEND LOGIN (Menggunakan Environment Variables) ---
+    // --- 1. LOGIN / SESSION / LOGOUT (username + password from env) ---
     if (action === "login") {
-      const validUser = process.env.ADMIN_USERNAME || "admin";
-      const validPass = process.env.ADMIN_PASSWORD || "admin123";
-      console.log("DEBUG LOGIN - Masuk:", {
-        username,
-        sentPassLength: password?.length,
-      });
-      console.log("DEBUG LOGIN - Target Env:", {
-        validUser,
-        hasPass: !!process.env.ADMIN_PASSWORD,
-      });
-      if (username === validUser && password === validPass) {
-        return NextResponse.json({ success: true });
-      } else {
+      const validUser = process.env.ADMIN_USERNAME;
+      const validPass = process.env.ADMIN_PASSWORD;
+      if (!validUser || !validPass || !process.env.AUTH_SECRET) {
         return NextResponse.json({
           success: false,
-          error: "Incorrect username or password.",
+          error: "Server is not configured. Please contact the admin.",
         });
       }
+      const okUser = safeEqual(String(username ?? ""), validUser);
+      const okPass = safeEqual(String(password ?? ""), validPass);
+      if (okUser && okPass) {
+        const res = NextResponse.json({ success: true });
+        res.cookies.set(SESSION_COOKIE, createSessionToken(), {
+          httpOnly: true,
+          sameSite: "lax",
+          secure: process.env.NODE_ENV === "production",
+          path: "/",
+          maxAge: SESSION_MAX_AGE,
+        });
+        return res;
+      }
+      return NextResponse.json({
+        success: false,
+        error: "Incorrect username or password.",
+      });
+    }
+
+    if (action === "session") {
+      const token = (await cookies()).get(SESSION_COOKIE)?.value;
+      return NextResponse.json({ authenticated: verifySessionToken(token) });
+    }
+
+    if (action === "logout") {
+      const res = NextResponse.json({ success: true });
+      res.cookies.set(SESSION_COOKIE, "", { path: "/", maxAge: 0 });
+      return res;
     }
 
     // --- 2. DATA ENGINE ---
     if (action === "getData") {
+      const token = (await cookies()).get(SESSION_COOKIE)?.value;
+      if (!verifySessionToken(token)) {
+        return NextResponse.json(
+          { error: "Not authenticated. Please log in again." },
+          { status: 401 },
+        );
+      }
+
       const allowedSheets = [
         "Media API",
         "Raw",

@@ -3,7 +3,6 @@
 import React, { useState, useRef, useEffect, useMemo } from "react";
 import Chart from "chart.js/auto";
 import { CONFIG, defaultFilters } from "@/lib/config";
-import { useSession } from "next-auth/react";
 import {
   parseNum,
   formatIDR,
@@ -42,7 +41,23 @@ const getColVal = (row: any, ...keys: string[]) => {
 };
 
 export default function DashboardApp() {
-  const { data: session, status } = useSession();
+  const [status, setStatus] = useState<
+    "loading" | "authenticated" | "unauthenticated"
+  >("loading");
+
+  // Check whether a valid login session cookie exists.
+  useEffect(() => {
+    fetch("/api/sheets", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ action: "session" }),
+    })
+      .then((r) => r.json())
+      .then((d) =>
+        setStatus(d.authenticated ? "authenticated" : "unauthenticated"),
+      )
+      .catch(() => setStatus("unauthenticated"));
+  }, []);
 
   const [currentView, setCurrentView] = useState<
     "login" | "welcome" | "home" | "dashboard"
@@ -305,6 +320,9 @@ export default function DashboardApp() {
     const unique = Array.from(new Set(filtered.map((r) => r[colName]))).filter(
       (v) => {
         if (!v || String(v).trim() === "") return false;
+        // The sheet may contain a literal "All" value; it would duplicate the
+        // "All" option we add ourselves (React duplicate-key warning).
+        if (String(v).trim().toLowerCase() === "all") return false;
         if (colName.toLowerCase().includes("brand")) return isValidBrandName(v);
         return true;
       },
@@ -1534,7 +1552,7 @@ export default function DashboardApp() {
   }
 
   if (status !== "authenticated") {
-    return <LoginView />;
+    return <LoginView onLoggedIn={() => setStatus("authenticated")} />;
   }
 
   if (currentView === "login") {

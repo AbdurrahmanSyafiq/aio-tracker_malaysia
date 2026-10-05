@@ -1044,18 +1044,18 @@ export default function CommerceTrackerView({
   return (
     <div className="w-full">
       {/* 4 TOP KPI CARDS WITH CIR & ADS CONTRIBUTION */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3 lg:gap-4 mb-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mb-6">
         {/* OVERALL CARD */}
         <div
           onClick={() => setDashboardContext("Overall")}
-          className={`bg-indigo-600 rounded-3xl p-4 lg:p-5 shadow-lg cursor-pointer transition-all hover:-translate-y-1 ${dashboardContext === "Overall" ? "ring-4 ring-indigo-300 shadow-indigo-600/40" : ""}`}>
-          <div className="flex justify-between items-center mb-3">
-            <h3 className="text-xs font-black text-indigo-100 uppercase tracking-widest">
+          className={`bg-indigo-600 rounded-3xl p-5 lg:p-6 shadow-lg cursor-pointer transition-all hover:-translate-y-1 ${dashboardContext === "Overall" ? "ring-4 ring-indigo-300 shadow-indigo-600/40" : ""}`}>
+          <div className="flex justify-between items-center mb-6">
+            <h3 className="text-sm font-black text-indigo-100 uppercase tracking-widest">
               Overall Commerce
             </h3>
-            <div className="p-2 bg-white/20 rounded-lg">
+            <div className="p-2.5 bg-white/20 rounded-xl">
               <svg
-                className="w-4 h-4 text-white"
+                className="w-5 h-5 text-white"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor">
@@ -1067,11 +1067,11 @@ export default function CommerceTrackerView({
               </svg>
             </div>
           </div>
-          <div className="space-y-2">
-            <div className="flex justify-between items-end border-b border-indigo-500/80 pb-1.5">
+          <div className="space-y-3">
+            <div className="flex flex-col items-start gap-1 border-b border-indigo-500/80 pb-2.5">
               <span className="text-xs font-bold text-indigo-200">Expense</span>
-              <div className="text-right flex items-center justify-end gap-2">
-                <span className="font-black text-[clamp(0.8rem,1.3vw,1rem)] text-white leading-none">
+              <div className="flex items-center justify-start gap-2 flex-wrap">
+                <span className="font-black text-[clamp(1.05rem,1.8vw,1.35rem)] text-white leading-none">
                   {formatIDR(enhancedKPIs.overall.exp)}
                 </span>
                 {renderGR(
@@ -1082,12 +1082,12 @@ export default function CommerceTrackerView({
                 )}
               </div>
             </div>
-            <div className="flex justify-between items-end border-b border-indigo-500/80 pb-1.5">
+            <div className="flex flex-col items-start gap-1 border-b border-indigo-500/80 pb-2.5">
               <span className="text-xs font-bold text-indigo-200">
                 GMV (Ads)
               </span>
-              <div className="text-right flex items-center justify-end gap-2">
-                <span className="font-black text-[clamp(0.8rem,1.3vw,1rem)] text-white leading-none">
+              <div className="flex items-center justify-start gap-2 flex-wrap">
+                <span className="font-black text-[clamp(1.05rem,1.8vw,1.35rem)] text-white leading-none">
                   {formatIDR(enhancedKPIs.overall.gmv)}
                 </span>
                 {renderGR(
@@ -1098,12 +1098,12 @@ export default function CommerceTrackerView({
                 )}
               </div>
             </div>
-            <div className="flex justify-between items-end border-b border-indigo-500/80 pb-1.5">
+            <div className="flex flex-col items-start gap-1 border-b border-indigo-500/80 pb-2.5">
               <span className="text-xs font-bold text-indigo-200">
                 GMV Sales
               </span>
-              <div className="text-right flex items-center justify-end gap-2">
-                <span className="font-black text-[clamp(0.8rem,1.3vw,1rem)] text-white leading-none">
+              <div className="flex items-center justify-start gap-2 flex-wrap">
+                <span className="font-black text-[clamp(1.05rem,1.8vw,1.35rem)] text-white leading-none">
                   {formatIDR(enhancedKPIs.overall.gmvSales)}
                 </span>
                 {renderGR(
@@ -1114,10 +1114,10 @@ export default function CommerceTrackerView({
                 )}
               </div>
             </div>
-            <div className="flex justify-between items-end border-b border-indigo-500/80 pb-1.5">
+            <div className="flex flex-col items-start gap-1 border-b border-indigo-500/80 pb-2.5">
               <span className="text-xs font-bold text-indigo-200">CIR %</span>
-              <div className="text-right flex items-center justify-end gap-2">
-                <span className="font-black text-[clamp(0.8rem,1.3vw,1rem)] text-amber-300 leading-none">
+              <div className="flex items-center justify-start gap-2 flex-wrap">
+                <span className="font-black text-[clamp(1.05rem,1.8vw,1.35rem)] text-amber-300 leading-none">
                   {formatPct(enhancedKPIs.overall.cir)}
                 </span>
                 {renderGR(
@@ -1128,12 +1128,12 @@ export default function CommerceTrackerView({
                 )}
               </div>
             </div>
-            <div className="flex justify-between items-end border-b border-indigo-500/80 pb-1.5">
+            <div className="flex flex-col items-start gap-1 border-b border-indigo-500/80 pb-2.5">
               <span className="text-xs font-bold text-indigo-200">
                 Ads Contribution
               </span>
-              <div className="text-right flex items-center justify-end gap-2">
-                <span className="font-black text-[clamp(0.8rem,1.3vw,1rem)] text-white leading-none">
+              <div className="flex items-center justify-start gap-2 flex-wrap">
+                <span className="font-black text-[clamp(1.05rem,1.8vw,1.35rem)] text-white leading-none">
                   {formatPct(enhancedKPIs.overall.adsContrib)}
                 </span>
                 {renderGR(
@@ -1144,10 +1144,10 @@ export default function CommerceTrackerView({
                 )}
               </div>
             </div>
-            <div className="flex justify-between items-end pt-1">
+            <div className="flex flex-col items-start gap-1 pt-1">
               <span className="text-xs font-bold text-indigo-200">ROAS</span>
-              <div className="text-right flex items-center justify-end gap-2">
-                <span className="font-black text-[clamp(0.8rem,1.3vw,1rem)] text-emerald-300 leading-none">
+              <div className="flex items-center justify-start gap-2 flex-wrap">
+                <span className="font-black text-[clamp(1.05rem,1.8vw,1.35rem)] text-emerald-300 leading-none">
                   {enhancedKPIs.overall.roas}
                 </span>
                 {renderGR(
@@ -1164,25 +1164,25 @@ export default function CommerceTrackerView({
         {/* TIKTOK SHOP CARD */}
         <div
           onClick={() => setDashboardContext("TikTok")}
-          className={`bg-slate-800 rounded-3xl p-4 lg:p-5 shadow-lg cursor-pointer transition-all hover:-translate-y-1 ${dashboardContext === "TikTok" ? "ring-4 ring-slate-400 shadow-slate-900/40" : ""}`}>
-          <div className="flex justify-between items-center mb-3">
-            <h3 className="text-xs font-black text-slate-300 uppercase tracking-widest">
+          className={`bg-slate-800 rounded-3xl p-5 lg:p-6 shadow-lg cursor-pointer transition-all hover:-translate-y-1 ${dashboardContext === "TikTok" ? "ring-4 ring-slate-400 shadow-slate-900/40" : ""}`}>
+          <div className="flex justify-between items-center mb-6">
+            <h3 className="text-sm font-black text-slate-300 uppercase tracking-widest">
               TikTok Shop
             </h3>
-            <div className="p-2 bg-white/20 rounded-lg">
+            <div className="p-2.5 bg-white/20 rounded-xl">
               <svg
-                className="w-4 h-4 text-white"
+                className="w-5 h-5 text-white"
                 fill="currentColor"
                 viewBox="0 0 24 24">
                 <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
               </svg>
             </div>
           </div>
-          <div className="space-y-2">
-            <div className="flex justify-between items-end border-b border-slate-600/80 pb-1.5">
+          <div className="space-y-3">
+            <div className="flex flex-col items-start gap-1 border-b border-slate-600/80 pb-2.5">
               <span className="text-xs font-bold text-slate-400">Expense</span>
-              <div className="text-right flex items-center justify-end gap-2">
-                <span className="font-black text-[clamp(0.8rem,1.3vw,1rem)] text-white leading-none">
+              <div className="flex items-center justify-start gap-2 flex-wrap">
+                <span className="font-black text-[clamp(1.05rem,1.8vw,1.35rem)] text-white leading-none">
                   {formatIDR(enhancedKPIs.tiktok.exp)}
                 </span>
                 {renderGR(
@@ -1193,12 +1193,12 @@ export default function CommerceTrackerView({
                 )}
               </div>
             </div>
-            <div className="flex justify-between items-end border-b border-slate-600/80 pb-1.5">
+            <div className="flex flex-col items-start gap-1 border-b border-slate-600/80 pb-2.5">
               <span className="text-xs font-bold text-slate-400">
                 GMV (Ads)
               </span>
-              <div className="text-right flex items-center justify-end gap-2">
-                <span className="font-black text-[clamp(0.8rem,1.3vw,1rem)] text-white leading-none">
+              <div className="flex items-center justify-start gap-2 flex-wrap">
+                <span className="font-black text-[clamp(1.05rem,1.8vw,1.35rem)] text-white leading-none">
                   {formatIDR(enhancedKPIs.tiktok.gmv)}
                 </span>
                 {renderGR(
@@ -1209,12 +1209,12 @@ export default function CommerceTrackerView({
                 )}
               </div>
             </div>
-            <div className="flex justify-between items-end border-b border-slate-600/80 pb-1.5">
+            <div className="flex flex-col items-start gap-1 border-b border-slate-600/80 pb-2.5">
               <span className="text-xs font-bold text-slate-400">
                 GMV Sales
               </span>
-              <div className="text-right flex items-center justify-end gap-2">
-                <span className="font-black text-[clamp(0.8rem,1.3vw,1rem)] text-white leading-none">
+              <div className="flex items-center justify-start gap-2 flex-wrap">
+                <span className="font-black text-[clamp(1.05rem,1.8vw,1.35rem)] text-white leading-none">
                   {formatIDR(enhancedKPIs.tiktok.gmvSales)}
                 </span>
                 {renderGR(
@@ -1225,10 +1225,10 @@ export default function CommerceTrackerView({
                 )}
               </div>
             </div>
-            <div className="flex justify-between items-end border-b border-slate-600/80 pb-1.5">
+            <div className="flex flex-col items-start gap-1 border-b border-slate-600/80 pb-2.5">
               <span className="text-xs font-bold text-slate-400">CIR %</span>
-              <div className="text-right flex items-center justify-end gap-2">
-                <span className="font-black text-[clamp(0.8rem,1.3vw,1rem)] text-amber-300 leading-none">
+              <div className="flex items-center justify-start gap-2 flex-wrap">
+                <span className="font-black text-[clamp(1.05rem,1.8vw,1.35rem)] text-amber-300 leading-none">
                   {formatPct(enhancedKPIs.tiktok.cir)}
                 </span>
                 {renderGR(
@@ -1239,12 +1239,12 @@ export default function CommerceTrackerView({
                 )}
               </div>
             </div>
-            <div className="flex justify-between items-end border-b border-slate-600/80 pb-1.5">
+            <div className="flex flex-col items-start gap-1 border-b border-slate-600/80 pb-2.5">
               <span className="text-xs font-bold text-slate-400">
                 Ads Contribution
               </span>
-              <div className="text-right flex items-center justify-end gap-2">
-                <span className="font-black text-[clamp(0.8rem,1.3vw,1rem)] text-white leading-none">
+              <div className="flex items-center justify-start gap-2 flex-wrap">
+                <span className="font-black text-[clamp(1.05rem,1.8vw,1.35rem)] text-white leading-none">
                   {formatPct(enhancedKPIs.tiktok.adsContrib)}
                 </span>
                 {renderGR(
@@ -1255,10 +1255,10 @@ export default function CommerceTrackerView({
                 )}
               </div>
             </div>
-            <div className="flex justify-between items-end pt-1">
+            <div className="flex flex-col items-start gap-1 pt-1">
               <span className="text-xs font-bold text-slate-400">ROAS</span>
-              <div className="text-right flex items-center justify-end gap-2">
-                <span className="font-black text-[clamp(0.8rem,1.3vw,1rem)] text-emerald-400 leading-none">
+              <div className="flex items-center justify-start gap-2 flex-wrap">
+                <span className="font-black text-[clamp(1.05rem,1.8vw,1.35rem)] text-emerald-400 leading-none">
                   {enhancedKPIs.tiktok.roas}
                 </span>
                 {renderGR(
@@ -1275,25 +1275,25 @@ export default function CommerceTrackerView({
         {/* SHOPEE OS CARD */}
         <div
           onClick={() => setDashboardContext("Shopee OS")}
-          className={`bg-orange-500 rounded-3xl p-4 lg:p-5 shadow-lg cursor-pointer transition-all hover:-translate-y-1 ${dashboardContext === "Shopee OS" ? "ring-4 ring-orange-300 shadow-orange-500/40" : ""}`}>
-          <div className="flex justify-between items-center mb-3">
-            <h3 className="text-xs font-black text-orange-100 uppercase tracking-widest">
+          className={`bg-orange-500 rounded-3xl p-5 lg:p-6 shadow-lg cursor-pointer transition-all hover:-translate-y-1 ${dashboardContext === "Shopee OS" ? "ring-4 ring-orange-300 shadow-orange-500/40" : ""}`}>
+          <div className="flex justify-between items-center mb-6">
+            <h3 className="text-sm font-black text-orange-100 uppercase tracking-widest">
               Shopee OS
             </h3>
-            <div className="p-2 bg-white/20 rounded-lg">
+            <div className="p-2.5 bg-white/20 rounded-xl">
               <svg
-                className="w-4 h-4 text-white"
+                className="w-5 h-5 text-white"
                 viewBox="0 0 109.59 122.88"
                 fill="currentColor">
                 <path d="M74.98,91.98C76.15,82.36,69.96,76.22,53.6,71c-7.92-2.7-11.66-6.24-11.57-11.12 c0.33-5.4,5.36-9.34,12.04-9.47c4.63,0.09,9.77,1.22,14.76,4.56c0.59,0.37,1.01,0.32,1.35-0.2c0.46-0.74,1.61-2.53,2-3.17 c0.26-0.42,0.31-0.96-0.35-1.44c-0.95-0.7-3.6-2.13-5.03-2.72c-3.88-1.62-8.23-2.64-12.86-2.63c-9.77,0.04-17.47,6.22-18.12,14.47 c-0.42,5.95,2.53,10.79,8.86,14.47c1.34,0.78,8.6,3.67,11.49,4.57c9.08,2.83,13.8,7.9,12.69,13.81c-1.01,5.36-6.65,8.83-14.43,8.93 c-6.17-0.24-11.71-2.75-16.02-6.1c-0.11-0.08-0.65-0.5-0.72-0.56c-0.53-0.42-1.11-0.39-1.47,0.15c-0.26,0.4-1.92,2.8-2.34,3.43 c-0.39,0.55-0.18,0.86,0.23,1.2c1.8,1.5,4.18,3.14,5.81,3.97c4.47,2.28,9.32,3.53,14.48,3.72c3.32,0.22,7.5-0.49,10.63-1.81 C70.63,102.67,74.25,97.92,74.98,91.98L74.98,91.98z M54.79,7.18c-10.59,0-19.22,9.98-19.62,22.47h39.25 C74.01,17.16,65.38,7.18,54.79,7.18L54.79,7.18z M94.99,122.88l-0.41,0l-80.82-0.01h0c-5.5-0.21-9.54-4.66-10.09-10.19l-0.05-1 l-3.61-79.5v0C0,32.12,0,32.06,0,32c0-1.28,1.03-2.33,2.3-2.35l0,0h25.48C28.41,13.15,40.26,0,54.79,0s26.39,13.15,27.01,29.65 h25.4h0.04c1.3,0,2.35,1.05,2.35,2.35c0,0.04,0,0.08,0,0.12v0l-3.96,79.81l-0.04,0.68C105.12,118.21,100.59,122.73,94.99,122.88 L94.99,122.88z" />
               </svg>
             </div>
           </div>
-          <div className="space-y-2">
-            <div className="flex justify-between items-end border-b border-orange-400/80 pb-1.5">
+          <div className="space-y-3">
+            <div className="flex flex-col items-start gap-1 border-b border-orange-400/80 pb-2.5">
               <span className="text-xs font-bold text-orange-100">Expense</span>
-              <div className="text-right flex items-center justify-end gap-2">
-                <span className="font-black text-[clamp(0.8rem,1.3vw,1rem)] text-white leading-none">
+              <div className="flex items-center justify-start gap-2 flex-wrap">
+                <span className="font-black text-[clamp(1.05rem,1.8vw,1.35rem)] text-white leading-none">
                   {formatIDR(enhancedKPIs.shopeeAds.exp)}
                 </span>
                 {renderGR(
@@ -1304,12 +1304,12 @@ export default function CommerceTrackerView({
                 )}
               </div>
             </div>
-            <div className="flex justify-between items-end border-b border-orange-400/80 pb-1.5">
+            <div className="flex flex-col items-start gap-1 border-b border-orange-400/80 pb-2.5">
               <span className="text-xs font-bold text-orange-100">
                 GMV (Ads)
               </span>
-              <div className="text-right flex items-center justify-end gap-2">
-                <span className="font-black text-[clamp(0.8rem,1.3vw,1rem)] text-white leading-none">
+              <div className="flex items-center justify-start gap-2 flex-wrap">
+                <span className="font-black text-[clamp(1.05rem,1.8vw,1.35rem)] text-white leading-none">
                   {formatIDR(enhancedKPIs.shopeeAds.gmv)}
                 </span>
                 {renderGR(
@@ -1320,12 +1320,12 @@ export default function CommerceTrackerView({
                 )}
               </div>
             </div>
-            <div className="flex justify-between items-end border-b border-orange-400/80 pb-1.5">
+            <div className="flex flex-col items-start gap-1 border-b border-orange-400/80 pb-2.5">
               <span className="text-xs font-bold text-orange-100">
                 GMV Sales
               </span>
-              <div className="text-right flex items-center justify-end gap-2">
-                <span className="font-black text-[clamp(0.8rem,1.3vw,1rem)] text-white leading-none">
+              <div className="flex items-center justify-start gap-2 flex-wrap">
+                <span className="font-black text-[clamp(1.05rem,1.8vw,1.35rem)] text-white leading-none">
                   {formatIDR(enhancedKPIs.shopeeAds.gmvSales)}
                 </span>
                 {renderGR(
@@ -1336,10 +1336,10 @@ export default function CommerceTrackerView({
                 )}
               </div>
             </div>
-            <div className="flex justify-between items-end border-b border-orange-400/80 pb-1.5">
+            <div className="flex flex-col items-start gap-1 border-b border-orange-400/80 pb-2.5">
               <span className="text-xs font-bold text-orange-100">CIR %</span>
-              <div className="text-right flex items-center justify-end gap-2">
-                <span className="font-black text-[clamp(0.8rem,1.3vw,1rem)] text-amber-200 leading-none">
+              <div className="flex items-center justify-start gap-2 flex-wrap">
+                <span className="font-black text-[clamp(1.05rem,1.8vw,1.35rem)] text-amber-200 leading-none">
                   {formatPct(enhancedKPIs.shopeeAds.cir)}
                 </span>
                 {renderGR(
@@ -1350,12 +1350,12 @@ export default function CommerceTrackerView({
                 )}
               </div>
             </div>
-            <div className="flex justify-between items-end border-b border-orange-400/80 pb-1.5">
+            <div className="flex flex-col items-start gap-1 border-b border-orange-400/80 pb-2.5">
               <span className="text-xs font-bold text-orange-100">
                 Ads Contribution
               </span>
-              <div className="text-right flex items-center justify-end gap-2">
-                <span className="font-black text-[clamp(0.8rem,1.3vw,1rem)] text-white leading-none">
+              <div className="flex items-center justify-start gap-2 flex-wrap">
+                <span className="font-black text-[clamp(1.05rem,1.8vw,1.35rem)] text-white leading-none">
                   {formatPct(enhancedKPIs.shopeeAds.adsContrib)}
                 </span>
                 {renderGR(
@@ -1366,10 +1366,10 @@ export default function CommerceTrackerView({
                 )}
               </div>
             </div>
-            <div className="flex justify-between items-end pt-1">
+            <div className="flex flex-col items-start gap-1 pt-1">
               <span className="text-xs font-bold text-orange-100">ROAS</span>
-              <div className="text-right flex items-center justify-end gap-2">
-                <span className="font-black text-[clamp(0.8rem,1.3vw,1rem)] text-emerald-200 leading-none">
+              <div className="flex items-center justify-start gap-2 flex-wrap">
+                <span className="font-black text-[clamp(1.05rem,1.8vw,1.35rem)] text-emerald-200 leading-none">
                   {enhancedKPIs.shopeeAds.roas}
                 </span>
                 {renderGR(
@@ -1386,25 +1386,25 @@ export default function CommerceTrackerView({
         {/* SHOPEE FBS CARD */}
         <div
           onClick={() => setDashboardContext("Shopee FBS")}
-          className={`bg-orange-600 rounded-3xl p-4 lg:p-5 shadow-lg cursor-pointer transition-all hover:-translate-y-1 ${dashboardContext === "Shopee FBS" ? "ring-4 ring-orange-300 shadow-orange-600/40" : ""}`}>
-          <div className="flex justify-between items-center mb-3">
-            <h3 className="text-xs font-black text-orange-100 uppercase tracking-widest">
+          className={`bg-orange-600 rounded-3xl p-5 lg:p-6 shadow-lg cursor-pointer transition-all hover:-translate-y-1 ${dashboardContext === "Shopee FBS" ? "ring-4 ring-orange-300 shadow-orange-600/40" : ""}`}>
+          <div className="flex justify-between items-center mb-6">
+            <h3 className="text-sm font-black text-orange-100 uppercase tracking-widest">
               Shopee FBS
             </h3>
-            <div className="p-2 bg-white/20 rounded-lg">
+            <div className="p-2.5 bg-white/20 rounded-xl">
               <svg
-                className="w-4 h-4 text-white"
+                className="w-5 h-5 text-white"
                 viewBox="0 0 109.59 122.88"
                 fill="currentColor">
                 <path d="M74.98,91.98C76.15,82.36,69.96,76.22,53.6,71c-7.92-2.7-11.66-6.24-11.57-11.12 c0.33-5.4,5.36-9.34,12.04-9.47c4.63,0.09,9.77,1.22,14.76,4.56c0.59,0.37,1.01,0.32,1.35-0.2c0.46-0.74,1.61-2.53,2-3.17 c0.26-0.42,0.31-0.96-0.35-1.44c-0.95-0.7-3.6-2.13-5.03-2.72c-3.88-1.62-8.23-2.64-12.86-2.63c-9.77,0.04-17.47,6.22-18.12,14.47 c-0.42,5.95,2.53,10.79,8.86,14.47c1.34,0.78,8.6,3.67,11.49,4.57c9.08,2.83,13.8,7.9,12.69,13.81c-1.01,5.36-6.65,8.83-14.43,8.93 c-6.17-0.24-11.71-2.75-16.02-6.1c-0.11-0.08-0.65-0.5-0.72-0.56c-0.53-0.42-1.11-0.39-1.47,0.15c-0.26,0.4-1.92,2.8-2.34,3.43 c-0.39,0.55-0.18,0.86,0.23,1.2c1.8,1.5,4.18,3.14,5.81,3.97c4.47,2.28,9.32,3.53,14.48,3.72c3.32,0.22,7.5-0.49,10.63-1.81 C70.63,102.67,74.25,97.92,74.98,91.98L74.98,91.98z M54.79,7.18c-10.59,0-19.22,9.98-19.62,22.47h39.25 C74.01,17.16,65.38,7.18,54.79,7.18L54.79,7.18z M94.99,122.88l-0.41,0l-80.82-0.01h0c-5.5-0.21-9.54-4.66-10.09-10.19l-0.05-1 l-3.61-79.5v0C0,32.12,0,32.06,0,32c0-1.28,1.03-2.33,2.3-2.35l0,0h25.48C28.41,13.15,40.26,0,54.79,0s26.39,13.15,27.01,29.65 h25.4h0.04c1.3,0,2.35,1.05,2.35,2.35c0,0.04,0,0.08,0,0.12v0l-3.96,79.81l-0.04,0.68C105.12,118.21,100.59,122.73,94.99,122.88 L94.99,122.88z" />
               </svg>
             </div>
           </div>
-          <div className="space-y-2">
-            <div className="flex justify-between items-end border-b border-orange-400/80 pb-1.5">
+          <div className="space-y-3">
+            <div className="flex flex-col items-start gap-1 border-b border-orange-400/80 pb-2.5">
               <span className="text-xs font-bold text-orange-100">Expense</span>
-              <div className="text-right flex items-center justify-end gap-2">
-                <span className="font-black text-[clamp(0.8rem,1.3vw,1rem)] text-white leading-none">
+              <div className="flex items-center justify-start gap-2 flex-wrap">
+                <span className="font-black text-[clamp(1.05rem,1.8vw,1.35rem)] text-white leading-none">
                   {formatIDR(enhancedKPIs.shopeeFbs.exp)}
                 </span>
                 {renderGR(
@@ -1415,12 +1415,12 @@ export default function CommerceTrackerView({
                 )}
               </div>
             </div>
-            <div className="flex justify-between items-end border-b border-orange-400/80 pb-1.5">
+            <div className="flex flex-col items-start gap-1 border-b border-orange-400/80 pb-2.5">
               <span className="text-xs font-bold text-orange-100">
                 GMV (Ads)
               </span>
-              <div className="text-right flex items-center justify-end gap-2">
-                <span className="font-black text-[clamp(0.8rem,1.3vw,1rem)] text-white leading-none">
+              <div className="flex items-center justify-start gap-2 flex-wrap">
+                <span className="font-black text-[clamp(1.05rem,1.8vw,1.35rem)] text-white leading-none">
                   {formatIDR(enhancedKPIs.shopeeFbs.gmv)}
                 </span>
                 {renderGR(
@@ -1431,12 +1431,12 @@ export default function CommerceTrackerView({
                 )}
               </div>
             </div>
-            <div className="flex justify-between items-end border-b border-orange-400/80 pb-1.5">
+            <div className="flex flex-col items-start gap-1 border-b border-orange-400/80 pb-2.5">
               <span className="text-xs font-bold text-orange-100">
                 GMV Sales
               </span>
-              <div className="text-right flex items-center justify-end gap-2">
-                <span className="font-black text-[clamp(0.8rem,1.3vw,1rem)] text-white leading-none">
+              <div className="flex items-center justify-start gap-2 flex-wrap">
+                <span className="font-black text-[clamp(1.05rem,1.8vw,1.35rem)] text-white leading-none">
                   {formatIDR(enhancedKPIs.shopeeFbs.gmvSales)}
                 </span>
                 {renderGR(
@@ -1447,10 +1447,10 @@ export default function CommerceTrackerView({
                 )}
               </div>
             </div>
-            <div className="flex justify-between items-end border-b border-orange-400/80 pb-1.5">
+            <div className="flex flex-col items-start gap-1 border-b border-orange-400/80 pb-2.5">
               <span className="text-xs font-bold text-orange-100">CIR %</span>
-              <div className="text-right flex items-center justify-end gap-2">
-                <span className="font-black text-[clamp(0.8rem,1.3vw,1rem)] text-amber-200 leading-none">
+              <div className="flex items-center justify-start gap-2 flex-wrap">
+                <span className="font-black text-[clamp(1.05rem,1.8vw,1.35rem)] text-amber-200 leading-none">
                   {formatPct(enhancedKPIs.shopeeFbs.cir)}
                 </span>
                 {renderGR(
@@ -1461,12 +1461,12 @@ export default function CommerceTrackerView({
                 )}
               </div>
             </div>
-            <div className="flex justify-between items-end border-b border-orange-400/80 pb-1.5">
+            <div className="flex flex-col items-start gap-1 border-b border-orange-400/80 pb-2.5">
               <span className="text-xs font-bold text-orange-100">
                 Ads Contribution
               </span>
-              <div className="text-right flex items-center justify-end gap-2">
-                <span className="font-black text-[clamp(0.8rem,1.3vw,1rem)] text-white leading-none">
+              <div className="flex items-center justify-start gap-2 flex-wrap">
+                <span className="font-black text-[clamp(1.05rem,1.8vw,1.35rem)] text-white leading-none">
                   {formatPct(enhancedKPIs.shopeeFbs.adsContrib)}
                 </span>
                 {renderGR(
@@ -1477,10 +1477,10 @@ export default function CommerceTrackerView({
                 )}
               </div>
             </div>
-            <div className="flex justify-between items-end pt-1">
+            <div className="flex flex-col items-start gap-1 pt-1">
               <span className="text-xs font-bold text-orange-100">ROAS</span>
-              <div className="text-right flex items-center justify-end gap-2">
-                <span className="font-black text-[clamp(0.8rem,1.3vw,1rem)] text-emerald-200 leading-none">
+              <div className="flex items-center justify-start gap-2 flex-wrap">
+                <span className="font-black text-[clamp(1.05rem,1.8vw,1.35rem)] text-emerald-200 leading-none">
                   {enhancedKPIs.shopeeFbs.roas}
                 </span>
                 {renderGR(
